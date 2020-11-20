@@ -1,24 +1,35 @@
+import React, { useState } from 'react'
 import logo from './logo.svg';
 import './App.css';
+import Registration from './Registration';
+import NewUser from './newUser';
+import Login from './Login';
 
 function App() {
+  const [userName, setUserName] = useState('');
+  const [userEmail, setUserEmail] = useState('');
+  const [userPassword, setUserPassword] = useState('');
+  const [bearer, setBearer] = useState('');
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Login
+         setUserEmail={setUserEmail}
+        userEmail={userEmail}
+        setUserPassword={setUserPassword}
+        userPassword={userPassword}
+        bearer={bearer}
+        setBearer={setBearer}
+      />
+
+      < NewUser
+        setUserName={setUserName}
+        userName={userName}
+        setUserEmail={setUserEmail}
+        userEmail={userEmail}
+        setUserPassword={setUserPassword}
+        userPassword={userPassword}
+      />
+    </>
   );
 }
 
