@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
-import logo from './logo.svg';
 import './App.css';
 import Registration from './Registration';
 import NewUser from './newUser';
 import Login from './Login';
 import NavBar from './NavBar';
+import Profile from './Profile';
 
 function App() {
   const [userName, setUserName] = useState('');
@@ -15,6 +15,10 @@ function App() {
     <>
 
     <NavBar />
+    {bearer ? 
+      <Profile />
+      : 
+      <>
       <Login
          setUserEmail={setUserEmail}
         userEmail={userEmail}
@@ -32,6 +36,8 @@ function App() {
         setUserPassword={setUserPassword}
         userPassword={userPassword}
       />
+      </>
+    }
     </>
   );
 }
