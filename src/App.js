@@ -4,6 +4,7 @@ import './App.css';
 import Registration from './Registration';
 import NewUser from './newUser';
 import Login from './Login';
+import NavBar from './NavBar';
 
 function App() {
   const [userName, setUserName] = useState('');
@@ -12,6 +13,8 @@ function App() {
   const [bearer, setBearer] = useState('');
   return (
     <>
+
+    <NavBar />
       <Login
          setUserEmail={setUserEmail}
         userEmail={userEmail}
