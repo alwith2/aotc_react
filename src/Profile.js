@@ -32,6 +32,7 @@ function Profile({ userInfo, setBearer, bearer, newPost }) {
             data
         })
             .then(res => {
+
                 console.log(res)
             })
 
@@ -51,14 +52,17 @@ function Profile({ userInfo, setBearer, bearer, newPost }) {
                 data: '',
             })
                 .then(res => {
+                    const getPosts = post;
+                    return getPosts;
                     console.log("res", res.data)
-                    //setCreatedPosts(res.data)
+                    setCreatedPosts(res.data)
                     //storePosts(res.data)
                 })
 
                 .catch(err => console.log('error: ', err))
         }
-    })
+
+    }, [bearer])
 
     return (
 
@@ -76,15 +80,17 @@ function Profile({ userInfo, setBearer, bearer, newPost }) {
                     </Form>
                 </Col>
                 <Col>
-                    {/* {createdPosts.map((item, idx) => {
+                    {createdPosts.map((item, idx) => {
                         <Card key={idx}>
                             <p>
                                 {item.post}
                             </p>
                         </Card>
-                    } */}
+                    })
+                    }
 
-                    )
+
+
 
                 </Col>
             </Row>

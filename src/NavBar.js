@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import {
     Collapse,
     Navbar,
@@ -21,6 +21,15 @@ function NavBar() {
 
     const toggle = () => setIsOpen(!isOpen);
 
+// function Logout(){
+//     const context = useContext(AppContext);
+//     function clickHandle(){
+//         localStorage.clear();
+//         context.setToken('');
+//         console.log("logged out")
+//     }
+//}
+
     return (
         <div>
             <Navbar color="light" light expand="md">
@@ -32,7 +41,7 @@ function NavBar() {
                             <NavLink href="/components/">Home</NavLink>
                         </NavItem>
                     </Nav>
-                    <button type="submit" className="btn btn-danger"> Logout </button>
+                    {/* <button onClick={clickHandle}>Logout</button> */}
                 </Collapse>
             </Navbar>
         </div>
