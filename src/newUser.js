@@ -50,7 +50,7 @@ function newUser({ setBearer, userEmail, setUserEmail, userPassword, setUserPass
                     placeholder="Enter password"
                     onChange={e => setUserPassword(e.target.value)}
                 />
-                <button type="submit"> Register </button>
+                <button type="submit" className="btn btn-danger"> Register </button>
             </form>
         </div>
     )

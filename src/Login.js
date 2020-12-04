@@ -16,7 +16,7 @@ function Login({ setCurrentPage, setUserInfo, userEmail, setUserEmail, userPassw
             data: {
                 grant_type: "password",
                 client_id: '2',
-                client_secret: "Z8UPkwyu9GuCAjLZN4k4hJO8JOAyrS5hCExUlEVQ",
+                client_secret: "olWKvHaNwxsCgsBFJQXvS8m4xLC3gbxKm57IJZUm",
                 password: userPassword,
                 username: userEmail,
                 scope: "",
@@ -68,7 +68,7 @@ function Login({ setCurrentPage, setUserInfo, userEmail, setUserEmail, userPassw
                     placeholder="Enter password"
                     onChange={e => setUserPassword(e.target.value)}
                 />
-                <button type="submit"> Login </button>
+                <button type="submit" className="btn btn-danger"> Login </button>
             </form>
         </div>
     )

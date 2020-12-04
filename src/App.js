@@ -11,19 +11,24 @@ function App() {
   const [userEmail, setUserEmail] = useState('');
   const [userPassword, setUserPassword] = useState('');
   const [bearer, setBearer] = useState('');
-  const [userInfo, setUserInfo] = useState();
+  const [userInfo, setUserInfo] = useState({});
+  const [newPost, setNewpost] = useState('');
+
   return (
     <>
 
     <NavBar />
     {bearer ? 
       <Profile 
-        //userInfo={userInfo}
+      userInfo={userInfo}
+      setBearer={setBearer}
+      bearer={bearer}
+      newPost={newPost}
       />
       : 
       <>
       <Login
-         setUserEmail={setUserEmail}
+        setUserEmail={setUserEmail}
         userEmail={userEmail}
         setUserPassword={setUserPassword}
         userPassword={userPassword}
