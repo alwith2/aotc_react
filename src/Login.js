@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import axios from 'axios';
 
-function Login({ userEmail, setUserEmail, userPassword, setUserPassword, bearer, setBearer }) {
+function Login({ setCurrentPage, setUserInfo, userEmail, setUserEmail, userPassword, setUserPassword, bearer, setBearer }) {
     function handleSubmit(event) {
         event.preventDefault();
         const headers = {
@@ -16,22 +16,45 @@ function Login({ userEmail, setUserEmail, userPassword, setUserPassword, bearer,
             data: {
                 grant_type: "password",
                 client_id: '2',
-                client_secret: "d6EIKrdsmTUuv9Zo1iiUsGrGwQbC9ANAt2NDWvWe",
+                client_secret: "olWKvHaNwxsCgsBFJQXvS8m4xLC3gbxKm57IJZUm",
                 password: userPassword,
                 username: userEmail,
                 scope: "",
             },
             headers,
         })
-            .then(res => setBearer(prevBearer=> prevBearer = res.data.access_token))
+            .then(res => {
+                console.log(res)
+                setBearer(res.data.access_token)
+            })
             .catch(err => console.log('error: ', err))
-            console.log(bearer);
+
 
     }
+    useEffect(() => {
+        {
+            bearer &&
+                axios({
+                    url: "http://localhost:8000/api/user",
+                    method: "get",
+                    headers: {
+                        Accept: "application/json",
+                        Authorization: `Bearer ${bearer}`
+                    }
+                })
+                    .then(response => {
+                        console.log(response)
+                        setUserInfo(response.data)
+                    })
+                    //.then(response => console.log(response))
+                    .catch(err => console.log('error: ', err))
+        }
+    }, [bearer])
+
     return (
         <div>
             <form onSubmit={e => handleSubmit(e)}>
-                
+
                 <input
                     type="email"
                     className="form-control"
@@ -45,7 +68,7 @@ function Login({ userEmail, setUserEmail, userPassword, setUserPassword, bearer,
                     placeholder="Enter password"
                     onChange={e => setUserPassword(e.target.value)}
                 />
-                <button type="submit"> Login </button>
+                <button type="submit" className="btn btn-danger"> Login </button>
             </form>
         </div>
     )

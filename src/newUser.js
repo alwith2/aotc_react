@@ -1,32 +1,36 @@
 import React from 'react'
 import axios from 'axios';
 
-function newUser({ userEmail, setUserEmail, userPassword, setUserPassword, userName, setUserName }) {
-    function handleSubmit(event){
+function newUser({ setBearer, userEmail, setUserEmail, userPassword, setUserPassword, userName, setUserName }) {
+    function handleSubmit(event) {
         event.preventDefault();
         const url = 'http://localhost:8000/register'
         const method = 'post'
         const headers = {
-        'Content-Type':'application/json;charset=UTF-8',
-        'Access-Control-Allow-Origin':'*'
-    }
-    const body = {name:userName, email:userEmail, password:userPassword}
-    const data = {name:userName, email:userEmail, password:userPassword}
-    
-    axios({
-        url,
-        method,
-        headers,
-        body,
-        data
-    })
-    .then(res => console.log(res))
-    .catch(err => console.log('error: ', err))
+            'Content-Type': 'application/json;charset=UTF-8',
+            'Access-Control-Allow-Origin': '*'
+        }
+        const body = { name: userName, email: userEmail, password: userPassword }
+        const data = { name: userName, email: userEmail, password: userPassword }
+
+        axios({
+            url,
+            method,
+            headers,
+            body,
+            data
+        })
+            .then(res => {
+                console.log(res)
+                setBearer(res.data.data.token)
+            })
+
+            .catch(err => console.log('error: ', err))
 
     }
     return (
         <div>
-            <form onSubmit={e=>handleSubmit(e)}>
+            <form onSubmit={e => handleSubmit(e)}>
                 <input
                     type="text"
                     className="form-control"
@@ -46,7 +50,7 @@ function newUser({ userEmail, setUserEmail, userPassword, setUserPassword, userN
                     placeholder="Enter password"
                     onChange={e => setUserPassword(e.target.value)}
                 />
-            <button type="submit"> Register </button>
+                <button type="submit" className="btn btn-danger"> Register </button>
             </form>
         </div>
     )
