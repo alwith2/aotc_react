@@ -15,7 +15,7 @@ import {
     NavbarText
 } from 'reactstrap';
 
-function NavBar({bearer}) {
+function NavBar({ bearer, setBearer }) {
 
     // const Example = (props) => {
     const [isOpen, setIsOpen] = useState(false);
@@ -30,11 +30,18 @@ function NavBar({bearer}) {
             Accept: "application/json",
             Authorization: `Bearer ${bearer}`
         };
-            axios({
-                url,
-                method,
-                headers,
+        console.log({ bearer });
+        axios({
+            url,
+            method,
+            headers,
+        })
+            .then(res => {
+                setBearer("")
+                console.log(res)
             })
+
+            .catch(err => console.log('error: ', err))
     }
 
 
@@ -44,12 +51,12 @@ function NavBar({bearer}) {
                 <NavbarBrand href="/">Poster</NavbarBrand>
                 <NavbarToggler onClick={toggle} />
                 <Collapse isOpen={isOpen} navbar>
-                    <Nav className="mr-auto" navbar>
+                    {/* <Nav className="mr-auto" navbar>
                         <NavItem>
                             <NavLink href="/components/">Home</NavLink>
                         </NavItem>
-                    </Nav>
-                    <button onClick={Logout}>Logout</button>
+                    </Nav> */}
+                    {bearer.length > 0 && <button onClick={Logout}>Logout</button>}
                 </Collapse>
             </Navbar>
         </div>

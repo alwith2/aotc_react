@@ -42,6 +42,7 @@ function App() {
 
       <NavBar
         bearer={bearer}
+        setBearer={setBearer}
       />
       {bearer ?
         <Profile
