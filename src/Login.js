@@ -52,7 +52,8 @@ function Login({ setCurrentPage, setUserInfo, userEmail, setUserEmail, userPassw
     }, [bearer])
 
     return (
-        <div>
+       
+        <div className="pt-4">
             <form onSubmit={e => handleSubmit(e)}>
 
                 <input
@@ -61,14 +62,16 @@ function Login({ setCurrentPage, setUserInfo, userEmail, setUserEmail, userPassw
                     aria-describedby="emailHelp"
                     placeholder="Enter email"
                     onChange={e => setUserEmail(e.target.value)}
+                    style={{width:'25%'}}
                 />
                 <input
                     type="password"
                     className="form-control"
                     placeholder="Enter password"
                     onChange={e => setUserPassword(e.target.value)}
+                    style={{width:'25%'}}
                 />
-                <button type="submit" className="btn btn-danger"> Login </button>
+                <button type="submit" className="btn btn-primary"> Login </button>
             </form>
         </div>
     )

@@ -1,4 +1,5 @@
 import React, { useState, useContext } from 'react';
+import axios from 'axios';
 import {
     Collapse,
     Navbar,
@@ -14,21 +15,28 @@ import {
     NavbarText
 } from 'reactstrap';
 
-function NavBar() {
+function NavBar({bearer}) {
 
     // const Example = (props) => {
     const [isOpen, setIsOpen] = useState(false);
 
     const toggle = () => setIsOpen(!isOpen);
 
-// function Logout(){
-//     const context = useContext(AppContext);
-//     function clickHandle(){
-//         localStorage.clear();
-//         context.setToken('');
-//         console.log("logged out")
-//     }
-//}
+    function Logout() {
+        const url = "http://localhost:8000/logout";
+        const method = "get";
+        const headers = {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+            Authorization: `Bearer ${bearer}`
+        };
+            axios({
+                url,
+                method,
+                headers,
+            })
+    }
+
 
     return (
         <div>
@@ -41,7 +49,7 @@ function NavBar() {
                             <NavLink href="/components/">Home</NavLink>
                         </NavItem>
                     </Nav>
-                    {/* <button onClick={clickHandle}>Logout</button> */}
+                    <button onClick={Logout}>Logout</button>
                 </Collapse>
             </Navbar>
         </div>
