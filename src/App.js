@@ -19,7 +19,8 @@ function App() {
   const [createdPosts, setCreatedPosts] = useState([]);
 
   useEffect(() => {
-    const url = 'http://localhost:8000/posts/all'
+    //const url = 'http://localhost:8000/posts/all'
+    const url = 'https://aotc-laravel.herokuapp.com/posts/all'
     const method = 'get'
     axios({
       url,

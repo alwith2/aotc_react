@@ -11,7 +11,8 @@ function Login({ setCurrentPage, setUserInfo, userEmail, setUserEmail, userPassw
         }
 
         axios({
-            url: "http://localhost:8000/v1/oauth/token",
+            //url: "http://localhost:8000/v1/oauth/token",
+            url: "https://aotc-laravel.herokuapp.com/v1/oauth/token",
             method: 'post',
             data: {
                 grant_type: "password",
@@ -35,7 +36,8 @@ function Login({ setCurrentPage, setUserInfo, userEmail, setUserEmail, userPassw
         {
             bearer &&
                 axios({
-                    url: "http://localhost:8000/api/user",
+                    //url: "http://localhost:8000/api/user",
+                    url: "https://aotc-laravel.herokuapp.com/api/user",
                     method: "get",
                     headers: {
                         Accept: "application/json",

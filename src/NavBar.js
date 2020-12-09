@@ -27,7 +27,8 @@ function NavBar({ bearer, setBearer }) {
     const toggle = () => setIsOpen(!isOpen);
 
     function Logout() {
-        const url = "http://localhost:8000/logout";
+        //const url = "http://localhost:8000/logout";
+        const url = "https://aotc-laravel.herokuapp.com/logout";
         const method = "get";
         const headers = {
             "Content-Type": "application/json",

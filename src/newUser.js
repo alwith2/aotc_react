@@ -4,7 +4,8 @@ import axios from 'axios';
 function newUser({ setBearer, userEmail, setUserEmail, userPassword, setUserPassword, userName, setUserName }) {
     function handleSubmit(event) {
         event.preventDefault();
-        const url = 'http://localhost:8000/register'
+        //const url = 'http://localhost:8000/register'
+        const url = 'https://aotc-laravel.herokuapp.com/register'
         const method = 'post'
         const headers = {
             'Content-Type': 'application/json;charset=UTF-8',

@@ -10,7 +10,8 @@ function Profile({ userInfo, setBearer, bearer, newPost, createdPosts, setCreate
 
     function newPost(event) {
         event.preventDefault();
-        const url = 'http://localhost:8000/makePost'
+        //const url = 'http://localhost:8000/makePost'
+        const url = 'https://aotc-laravel.herokuapp.com/makePost'
         const method = 'post'
 
         const data = { post: post, ref_user_id: userInfo.id, /*ref_parent_post_id: ref_parent_post_id*/ }
