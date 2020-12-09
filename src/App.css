@@ -10,3 +10,7 @@
   background-size: cover;
   height: 100vh;
 }
+
+.nav {
+  align-items: flex-end;
+}

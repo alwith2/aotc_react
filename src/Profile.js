@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios';
-import { Button, Form, FormGroup, Label, Input, FormText, Container, Row, Col, Card } from 'reactstrap';
+import { Button, Form, FormGroup, Label, Input, FormText, Container, Row, Col, Card, CardFooter } from 'reactstrap';
 
 
 function Profile({ userInfo, setBearer, bearer, newPost, createdPosts, setCreatedPosts }) {
@@ -48,21 +48,26 @@ function Profile({ userInfo, setBearer, bearer, newPost, createdPosts, setCreate
                     </Form>
                 </Col>
                 <Col>
-                    <div className="overflow-auto" style={{height: "80vh"}}>
+                    <div className="overflow-auto" style={{ height: "80vh" }}>
                         {createdPosts.sort((a, b) => {
                             return b.id - a.id;
                         }).map((item, idx) => {
                             console.log(item);
                             return (
-                                <Card className="py-1 my-2" key={idx}>
-                                    <p>
+                                <Card className="py-1 my-2 bg-light" key={idx}>
+                                    <p className="px-4 pt-2 text-">
                                         {item.post}
-                                        <br></br>
-                                        {item.user.name}
                                     </p>
+                                    <br></br>
+                                    <CardFooter className="text-center">
+                                    <p className="mx-auto">
+                                        -{item.user.name}
+                                    </p>
+                                    </CardFooter>
+
                                 </Card>)
                         })}
-                        </div>
+                    </div>
                 </Col>
             </Row>
         </Container>

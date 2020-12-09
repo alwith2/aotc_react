@@ -4,7 +4,7 @@ import React from 'react'
 function Footer() {
     return (
        <footer className="fixed-bottom">
-            <h1>Test</h1>
+            <h1></h1>
        </footer>
     )
 }

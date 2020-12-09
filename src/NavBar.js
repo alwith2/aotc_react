@@ -1,6 +1,8 @@
 import React, { useState, useContext } from 'react';
 import axios from 'axios';
 import {
+    Col,
+    Button,
     Collapse,
     Navbar,
     NavbarToggler,
@@ -12,7 +14,9 @@ import {
     DropdownToggle,
     DropdownMenu,
     DropdownItem,
-    NavbarText
+    NavbarText,
+    Row,
+    Container
 } from 'reactstrap';
 
 function NavBar({ bearer, setBearer }) {
@@ -47,21 +51,22 @@ function NavBar({ bearer, setBearer }) {
 
     return (
         <div>
-            <Navbar color="light" light expand="md">
-                <NavbarBrand href="/">Poster</NavbarBrand>
-                <NavbarToggler onClick={toggle} />
-                <Collapse isOpen={isOpen} navbar>
-                    {/* <Nav className="mr-auto" navbar>
-                        <NavItem>
-                            <NavLink href="/components/">Home</NavLink>
-                        </NavItem>
-                    </Nav> */}
-                    {bearer.length > 0 && <button onClick={Logout}>Logout</button>}
-                </Collapse>
+            <Navbar style={{ backgroundColor: "#355834" }} light expand="md">
+                <Container>
+                    <Row className="justify-content-around">
+                        <Col>
+                            <NavbarBrand style= {{ fontFamily:"verdana", color:"white"}}>Poster</NavbarBrand>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col className="nav">
+                            {bearer.length > 0 && <Button style= {{ fontFamily:"verdana"}}className="btn btn-primary" onClick={Logout}>Logout</Button>}
+                        </Col>
+                    </Row>
+                </Container>
             </Navbar>
         </div>
     );
 }
-//}
 
 export default NavBar;
