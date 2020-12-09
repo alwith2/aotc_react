@@ -1,5 +1,8 @@
 import React, { useState, useContext } from 'react';
+import axios from 'axios';
 import {
+    Col,
+    Button,
     Collapse,
     Navbar,
     NavbarToggler,
@@ -11,42 +14,59 @@ import {
     DropdownToggle,
     DropdownMenu,
     DropdownItem,
-    NavbarText
+    NavbarText,
+    Row,
+    Container
 } from 'reactstrap';
 
-function NavBar() {
+function NavBar({ bearer, setBearer }) {
 
     // const Example = (props) => {
     const [isOpen, setIsOpen] = useState(false);
 
     const toggle = () => setIsOpen(!isOpen);
 
-// function Logout(){
-//     const context = useContext(AppContext);
-//     function clickHandle(){
-//         localStorage.clear();
-//         context.setToken('');
-//         console.log("logged out")
-//     }
-//}
+    function Logout() {
+        const url = "http://localhost:8000/logout";
+        const method = "get";
+        const headers = {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+            Authorization: `Bearer ${bearer}`
+        };
+        console.log({ bearer });
+        axios({
+            url,
+            method,
+            headers,
+        })
+            .then(res => {
+                setBearer("")
+                console.log(res)
+            })
+
+            .catch(err => console.log('error: ', err))
+    }
+
 
     return (
         <div>
-            <Navbar color="light" light expand="md">
-                <NavbarBrand href="/">Poster</NavbarBrand>
-                <NavbarToggler onClick={toggle} />
-                <Collapse isOpen={isOpen} navbar>
-                    <Nav className="mr-auto" navbar>
-                        <NavItem>
-                            <NavLink href="/components/">Home</NavLink>
-                        </NavItem>
-                    </Nav>
-                    {/* <button onClick={clickHandle}>Logout</button> */}
-                </Collapse>
+            <Navbar style={{ backgroundColor: "#355834" }} light expand="md">
+                <Container>
+                    <Row className="justify-content-around">
+                        <Col>
+                            <NavbarBrand style= {{ fontFamily:"verdana", color:"white"}}>Poster</NavbarBrand>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col className="nav">
+                            {bearer.length > 0 && <Button style= {{ fontFamily:"verdana"}}className="btn btn-primary" onClick={Logout}>Logout</Button>}
+                        </Col>
+                    </Row>
+                </Container>
             </Navbar>
         </div>
     );
 }
-//}
 
 export default NavBar;

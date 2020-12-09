@@ -29,13 +29,15 @@ function newUser({ setBearer, userEmail, setUserEmail, userPassword, setUserPass
 
     }
     return (
-        <div>
+        <div className="pt-4">
+        <hr/>
             <form onSubmit={e => handleSubmit(e)}>
                 <input
                     type="text"
                     className="form-control"
                     placeholder="Enter user name"
                     onChange={e => setUserName(e.target.value)}
+                    style={{width:'25%'}}
                 />
                 <input
                     type="email"
@@ -43,14 +45,16 @@ function newUser({ setBearer, userEmail, setUserEmail, userPassword, setUserPass
                     aria-describedby="emailHelp"
                     placeholder="Enter email"
                     onChange={e => setUserEmail(e.target.value)}
+                    style={{width:'25%'}}
                 />
                 <input
                     type="password"
                     className="form-control"
                     placeholder="Enter password"
                     onChange={e => setUserPassword(e.target.value)}
+                    style={{width:'25%'}}
                 />
-                <button type="submit" className="btn btn-danger"> Register </button>
+                <button type="submit" className="btn btn-primary"> Register </button>
             </form>
         </div>
     )
